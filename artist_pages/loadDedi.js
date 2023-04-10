@@ -37,7 +37,7 @@ container.addEventListener('mousemove', (e) => {
 
 // LOAD THE DEDI
 const apiUrl = "https://api.github.com/repos/tomsdedicaces/drawings/contents/";
-const accessToken = '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';
+const accessToken = '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';
 
 // Fetch the contents of the folder
 var counter = 0
