@@ -37,10 +37,15 @@ container.addEventListener('mousemove', (e) => {
 
 // LOAD THE DEDI
 const apiUrl = "https://api.github.com/repos/tomsdedicaces/drawings/contents/";
+const accessToken = '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';
 
 // Fetch the contents of the folder
 var counter = 0
-fetch(apiUrl + folderName)
+fetch(apiUrl + folderName, {
+    headers: {
+        Authorization: `token ${accessToken}`,
+    },
+})
 .then(response => response.json())
 .then(data => {
     // Filter the results to only include image files
@@ -48,8 +53,7 @@ fetch(apiUrl + folderName)
     // Loop through the image files and create an HTML img element for each one
     imageFiles.forEach(imageLink => {
         const img = document.createElement('img');
-        console.log(`${imageLink}`)
-        img.src = `${imageLink}`;
+        img.src = imageLink.download_url;
         img.classList.add("galleryImg")
         const imgdiv = document.createElement('div')
         imgdiv.classList.add('imgdiv')
@@ -61,7 +65,7 @@ fetch(apiUrl + folderName)
         container.appendChild(imgdiv);
         counter++
     });
-    document.getElementById("name").innerHTML = authorName+"("+counter+")"
+    document.getElementById("name").innerHTML = authorName+" ("+counter+")"
 });
 
 // add click event listener to gallery container
