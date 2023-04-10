@@ -43,7 +43,8 @@ const accessToken = 'github_pat_11AOKCTZQ0hCA3T64kbXmT_56hS18KqcMT9R4fgrFGYnu6GT
 var counter = 0
 fetch(apiUrl + folderName, {
     headers: {
-        Authorization: `token ${accessToken}`,
+        'Authorization': `token ${accessToken}`,
+        'Accept': 'application/vnd.github.v3+json'
     },
 })
 .then(response => response.json())
