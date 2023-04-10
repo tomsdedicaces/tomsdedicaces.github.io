@@ -37,10 +37,15 @@ container.addEventListener('mousemove', (e) => {
 
 // LOAD THE DEDI
 const apiUrl = "https://api.github.com/repos/tomsdedicaces/drawings/contents/";
+const accessToken = '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';
 
 // Fetch the contents of the folder
 var counter = 0
-fetch(apiUrl + folderName)
+fetch(apiUrl + folderName, {
+    headers: {
+        Authorization: `token ${accessToken}`,
+    },
+})
 .then(response => response.json())
 .then(data => {
     // Filter the results to only include image files
