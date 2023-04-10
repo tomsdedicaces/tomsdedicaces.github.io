@@ -183,10 +183,11 @@ a:not(.dropdown-content a):hover {
 #footerDiv {
     height:40px;
     position:relative;
+    box-sizing:border-box;
 }
 
 .tomPhoto {
-    width:350px;
+    width:25%;
     align-self: center;
     margin: 0 15px;
 }
