@@ -1,0 +1,2 @@
+env:
+  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
