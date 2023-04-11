@@ -37,12 +37,11 @@ container.addEventListener('mousemove', (e) => {
 
 // LOAD THE DEDI
 const apiUrl = "https://api.github.com/repos/tomsdedicaces/drawings/contents/";
-const accessToken = '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';
 
 // View rate limit
 fetch(`https://api.github.com/rate_limit`, {
     headers: {
-        Authorization: `token ${accessToken}`,
+        Authorization: `token ${process.env.ACCESS_TOKEN}`,
     },
 })
     .then(response => response.json())
@@ -58,7 +57,7 @@ fetch(`https://api.github.com/rate_limit`, {
 var counter = 0
 fetch(apiUrl + folderName, {
     headers: {
-        Authorization: `token ${accessToken}`,
+        Authorization: `token ${process.env.ACCESS_TOKEN}`,
     },
 })
 .then(response => response.json())
