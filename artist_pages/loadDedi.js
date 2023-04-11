@@ -37,14 +37,28 @@ container.addEventListener('mousemove', (e) => {
 
 // LOAD THE DEDI
 const apiUrl = "https://api.github.com/repos/tomsdedicaces/drawings/contents/";
-const accessToken = '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';
+const accessToken = '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';
+
+// View rate limit
+fetch(`https://api.github.com/rate_limit`, {
+    headers: {
+        Authorization: `token ${accessToken}`,
+    },
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log(`You have ${data.rate.remaining} requests left`);
+        console.log(`Your rate limit will reset at ${new Date(data.rate.reset * 1000)}`);
+    })
+    .catch(error => {
+        console.error(error);
+    });
 
 // Fetch the contents of the folder
 var counter = 0
 fetch(apiUrl + folderName, {
     headers: {
-        'Authorization': `token ${accessToken}`,
-        'Accept': 'application/vnd.github.v3+json'
+        Authorization: `token ${accessToken}`,
     },
 })
 .then(response => response.json())
