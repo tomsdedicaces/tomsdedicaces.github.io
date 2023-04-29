@@ -26,6 +26,7 @@ fetch(`https://api.github.com/rate_limit`, {
 const owner = "tomsdedicaces";
 const repo = "drawings";
 var totalCount = 0;
+var idcount = 0;
 
 function countImageFiles() {
     fetch(apiUrl, {
@@ -37,6 +38,7 @@ function countImageFiles() {
     .then(data => {
         const folders = data.filter(item => item.type === "dir").map(item => item.name);
         for (const folder of folders) {
+        idcount++
             fetch(apiUrl+folder, {
                 headers: {
                     Authorization: `token ${reString(accessToken)}`,
@@ -47,9 +49,7 @@ function countImageFiles() {
                 const imageFiles = data.filter(item => item.type === "file" && item.name.match(/\.(jpg|jpeg|png|gif)$/i));
                 totalCount += imageFiles.length;
                 console.log(totalCount)
-                if (folder === folders[folders.length - 1]) {
-                    document.getElementById("mainTitle").innerHTML = "Toms Dédicaces ("+totalCount+")"
-                }
+                document.getElementById("mainTitle").innerHTML = "Toms Dédicaces ("+totalCount+")"
             })
             .catch(error => console.error(error));
         }
