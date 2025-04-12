@@ -22,7 +22,7 @@ const apiUrl = "https://api.github.com/repos/tomsdedicaces/drawings/contents/";
 const accessToken = 'Yag2F0YcxWAfh8Nvtq6BqxBSwNsJAk9pK7rx_phg';
 
 // View rate limit
-fetch(`https://api.github.com/rate_limit`, {
+/* fetch(`https://api.github.com/rate_limit`, {
     headers: {
         Authorization: `token ${reString(accessToken)}`,
     },
@@ -36,6 +36,7 @@ fetch(`https://api.github.com/rate_limit`, {
         console.error(error);
     });
 
+*/
 // Fetch the contents of the folder
 var counter = 0
 fetch(apiUrl + folderName, {

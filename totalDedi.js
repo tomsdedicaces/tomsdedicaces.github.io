@@ -9,7 +9,7 @@ function reString(str) {
     return nString;
 }
 
-fetch(`https://api.github.com/rate_limit`, {
+/*fetch(`https://api.github.com/rate_limit`, {
     headers: {
         Authorization: `token ${reString(accessToken)}`,
     },
@@ -22,6 +22,7 @@ fetch(`https://api.github.com/rate_limit`, {
     .catch(error => {
         console.error(error);
 });
+*/
 
 const owner = "tomsdedicaces";
 const repo = "drawings";
@@ -48,7 +49,6 @@ function countImageFiles() {
             .then(data => {
                 const imageFiles = data.filter(item => item.type === "file" && item.name.match(/\.(jpg|jpeg|png|gif)$/i));
                 totalCount += imageFiles.length;
-                console.log(totalCount)
                 document.getElementById("subTitle").innerHTML = "("+totalCount+" van 445 auteurs)"
             })
             .catch(error => console.error(error));

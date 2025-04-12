@@ -120,6 +120,16 @@ button > p {
     padding-bottom:20px;
 }
 
+@media (pointer: coarse) {
+    #gallery::-webkit-scrollbar {
+      display: none;
+    }
+  
+    #gallery {
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+
 #gallery::-webkit-scrollbar:vertical {
     display: none; /* Hide scrollbar for Chrome, Safari and Opera */
 }
