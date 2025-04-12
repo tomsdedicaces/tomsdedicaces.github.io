@@ -1,7 +1,4 @@
 document.getElementById("title").innerHTML = authorName
-let isDown = false;
-let startX;
-let scrollLeft;
 
 // Load images
 // Get a reference to the container element
@@ -11,29 +8,6 @@ const container = document.querySelector('#gallery');
 const folderPath = 'drawings/'+folderName;
 
 var imageLoadIndex = 1
-
-container.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-
-});
-
-container.addEventListener('mouseleave', () => {
-    isDown = false;
-});
-
-container.addEventListener('mouseup', () => {
-    isDown = false;
-});
-
-container.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 2;
-    container.scrollLeft = scrollLeft - walk;
-});
 
 function reString(str) {
     var nString = "";
@@ -91,7 +65,7 @@ fetch(apiUrl + folderName, {
     document.getElementById("name").innerHTML = authorName+" ("+counter+")"
 });
 
-// add click event listener to gallery container
+// Viewing dedis fullscreen
 container.addEventListener('click', (e) => {
     // check if clicked element is a full-screen button
     if (e.target.classList.contains('fullScreenButton')) {
@@ -108,3 +82,11 @@ container.addEventListener('click', (e) => {
         window.open(imageUrl, '_blank');
     }
 });
+
+// Scrolling horizontally
+container.addEventListener('wheel', (e) => {
+    if (e.deltaY !== 0) {
+      e.preventDefault(); // prevent vertical scroll
+      container.scrollLeft += e.deltaY; // scroll horizontally instead
+    }
+  });
