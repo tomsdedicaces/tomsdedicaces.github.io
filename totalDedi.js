@@ -49,7 +49,7 @@ function countImageFiles() {
             .then(data => {
                 const imageFiles = data.filter(item => item.type === "file" && item.name.match(/\.(jpg|jpeg|png|gif)$/i));
                 totalCount += imageFiles.length;
-                document.getElementById("subTitle").innerHTML = "("+totalCount+" van 468 auteurs)"
+                document.getElementById("subTitle").innerHTML = "("+totalCount+" van 469 auteurs)"
             })
             .catch(error => console.error(error));
         }
